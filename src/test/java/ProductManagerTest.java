@@ -32,10 +32,28 @@ public class ProductManagerTest {
     }
 
     @Test
+    public void shouldSearchByTextJustOne() {
+
+        Product[] expected = {product4};
+        Product[] actual = manager.searchBy("поле");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSearchByText() {
 
         Product[] expected = {product1, product4};
         Product[] actual = manager.searchBy("Один");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void couldNotSearchByText() {
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("нет");
 
         assertArrayEquals(expected, actual);
     }
